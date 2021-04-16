@@ -22,8 +22,4 @@ const Wheel = () => {
   );
 };
 
-Wheel.propTypes = {
-
-};
-
 export default Wheel;

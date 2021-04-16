@@ -1,0 +1,22 @@
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-container {
+  top: 50%;
+  left: 50%;
+  width: 40vw;
+  z-index: 9999;
+  position: absolute;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  display: flex;
+  padding: 16px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}

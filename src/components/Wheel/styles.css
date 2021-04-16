@@ -70,6 +70,7 @@
   top: 0;
   overflow: hidden;
   width: 100%;
+  user-select: none;
 }
 
 .svg-container {
