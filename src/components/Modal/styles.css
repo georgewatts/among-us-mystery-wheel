@@ -16,7 +16,7 @@
   transform: translate(-50%, -50%);
   border-radius: 16px;
   display: flex;
-  padding: 16px;
+  padding: 24px 48px;
   flex-direction: row-reverse;
   justify-content: space-between;
 }

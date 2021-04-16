@@ -1,0 +1,28 @@
+.title {
+  margin: 0;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-container {
+  width: 100%;
+  display: flex;
+  margin-top: 16px;
+  align-items: center;
+}
+
+.option {
+  width: 90%;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.save {
+  padding: 8px 16px;
+  margin-top: 16px;
+  width: fit-content;
+  align-self: center;
+}
