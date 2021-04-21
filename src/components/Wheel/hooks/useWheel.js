@@ -18,10 +18,8 @@ const useWheel = () => {
     if (!spinning) {
       setSpinning(true);
       mp3.play();
-      const randomOffset = 360 / segments.length / 2;
-      const randomDegrees = Math.floor(
-        Math.random() * (360 - (360 / segments.length)),
-      ) + randomOffset;
+      const randomOffset = 360 / segments.length;
+      const randomDegrees = Math.floor(Math.random() * 360) - randomOffset;
       const newRotation = rotation + randomDegrees + 720;
       setRotation(newRotation);
       const actualRotationBetweenSegments = newRotation % 360;
