@@ -7,8 +7,6 @@ import { MODAL_TYPES } from '../../Modal';
 
 const ANIMATION_DURATION = 5000;
 const useWheel = () => {
-  // const segments = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-
   const segments = useSelector((state) => state.options);
   const dispatch = useDispatch();
   const [rotation, setRotation] = useState(0);
@@ -20,7 +18,10 @@ const useWheel = () => {
     if (!spinning) {
       setSpinning(true);
       mp3.play();
-      const randomDegrees = Math.floor(Math.random() * 360) - (360 / segments.length);
+      const randomOffset = 360 / segments.length / 2;
+      const randomDegrees = Math.floor(
+        Math.random() * (360 - (360 / segments.length)),
+      ) + randomOffset;
       const newRotation = rotation + randomDegrees + 720;
       setRotation(newRotation);
       const actualRotationBetweenSegments = newRotation % 360;
@@ -40,7 +41,7 @@ const useWheel = () => {
 
   const renderSegments = () => {
     const segmentsCount = segments.length;
-    return segments.map((segment, index) => {
+    return segments.map((_, index) => {
       const offset = index * (360 / segmentsCount);
       return (
         <div className="wheel-segment-container">

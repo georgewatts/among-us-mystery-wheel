@@ -1,0 +1,20 @@
+.players-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.players-container > p {
+  padding: 8px;
+  margin-right: 8px;
+  background-color: lightcoral;
+  cursor: pointer;
+}
+
+.selected-player {
+  display: flex;
+  align-items: center;
+}
+
+.selected-player > p {
+  margin-right: 8px;
+}

@@ -1,0 +1,12 @@
+.option-container {
+  width: 100%;
+  display: flex;
+  margin-top: 16px;
+  align-items: center;
+}
+
+.option {
+  width: 90%;
+  height: 24px;
+  margin-right: 8px;
+}

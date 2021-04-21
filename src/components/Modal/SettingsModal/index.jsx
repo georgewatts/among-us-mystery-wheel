@@ -1,32 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { X, Plus } from 'react-feather';
 
-import styles from './SettingsModal.module.css';
+import OptionInput from '../../OptionInput';
 import { hideModal, setOptions } from '../../../store/actions';
 
-const OptionInput = ({
-  currentValue, onChange, lastInput, onLastInputClick, onRemoveClick,
-}) => (
-  <div className={styles['option-container']}>
-    <input
-      className={styles.option}
-      value={currentValue}
-      onChange={(event) => onChange(event.target.value)}
-    />
-    <X color="red" onClick={onRemoveClick} />
-    {lastInput && <Plus color="green" onClick={onLastInputClick} />}
-  </div>
-);
-
-OptionInput.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  lastInput: PropTypes.bool.isRequired,
-  currentValue: PropTypes.string.isRequired,
-  onRemoveClick: PropTypes.func.isRequired,
-  onLastInputClick: PropTypes.func.isRequired,
-};
+import styles from './SettingsModal.module.css';
 
 const SettingsModal = () => {
   const dispatch = useDispatch();
