@@ -38,11 +38,13 @@ const PlayersModal = () => {
     <div>
       <h2>Select the players playing apart from yourself</h2>
       {unselectedPlayers.length > 0 && (
-        <div className={styles['players-container']}>
-          The usual suspects (click to add):
-          {unselectedPlayers.map(
-            (player) => <p onClick={() => addPlayer(player)}>{player}</p>,
-          )}
+        <div>
+          <span>The usual suspects (click to add):</span>
+          <div className={styles['players-container']}>
+            {unselectedPlayers.map(
+              (player) => <p onClick={() => addPlayer(player)}>{player}</p>,
+            )}
+          </div>
         </div>
       )}
       <div>
@@ -57,7 +59,7 @@ const PlayersModal = () => {
         </div>
       </div>
       <button
-        className={styles.save}
+        className="save"
         type="button"
         onClick={() => {
           dispatch(setPlayers(selectedPlayers));

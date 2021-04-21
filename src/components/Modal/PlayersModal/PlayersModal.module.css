@@ -6,8 +6,8 @@
 .players-container > p {
   padding: 8px;
   margin-right: 8px;
-  background-color: lightcoral;
   cursor: pointer;
+  background-color: lightcoral;
 }
 
 .selected-player {
