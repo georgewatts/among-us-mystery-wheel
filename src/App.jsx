@@ -1,5 +1,4 @@
 import React from 'react';
-import { Settings } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Wheel from './components/Wheel';
