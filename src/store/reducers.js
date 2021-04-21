@@ -9,7 +9,6 @@ const MODAL_DEFAULT_STATE = {
 export const modal = (state = MODAL_DEFAULT_STATE, action) => {
   switch (action.type) {
     case SHOW_MODAL:
-      console.log(action);
       return {
         active: true,
         type: action.payload.type,

@@ -25,7 +25,6 @@ const Modal = () => {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.modal);
   const ModalComponent = MODALS[modal.type];
-  console.log(modal);
   const onClickClose = () => {
     if (modal.closePredicate) {
       dispatch(hideModal());
