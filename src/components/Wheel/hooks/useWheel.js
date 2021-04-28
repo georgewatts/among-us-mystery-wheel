@@ -6,13 +6,25 @@ import { showModal } from '../../../store/actions';
 import { MODAL_TYPES } from '../../Modal';
 
 const ANIMATION_DURATION = 5000;
+
 const useWheel = () => {
-  const segments = useSelector((state) => state.options);
+  const crewmateSegments = useSelector((state) => state.options);
+  const impostorSegments = useSelector((state) => state.players);
+  const { userType } = useSelector((state) => state.userSettings);
+  const segments = userType === 'crewmate' ? crewmateSegments : impostorSegments;
   const dispatch = useDispatch();
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
   const initialRotationOffset = (360 / segments.length) / 2;
   const mp3 = new Audio('/thewheelhausaudio.mp3');
+
+  const dispatchModal = (selectedSegment) => {
+    const content = userType === 'crewmate' ? segments[selectedSegment - 1] : selectedSegment - 1;
+    dispatch(showModal({
+      type: MODAL_TYPES.WHEEL_RESULT,
+      content,
+    }));
+  };
 
   const onWheelClick = () => {
     if (!spinning) {
@@ -29,10 +41,7 @@ const useWheel = () => {
       if (selectedSegment > segments.length) selectedSegment = 1;
       setTimeout(() => {
         setSpinning(false);
-        dispatch(showModal({
-          type: MODAL_TYPES.WHEEL_RESULT,
-          content: segments[selectedSegment - 1],
-        }));
+        dispatchModal(selectedSegment);
       }, ANIMATION_DURATION);
     }
   };

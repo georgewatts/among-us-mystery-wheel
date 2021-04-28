@@ -1,5 +1,5 @@
 import {
-  SHOW_MODAL, HIDE_MODAL, SET_OPTIONS, SET_PLAYERS,
+  SHOW_MODAL, HIDE_MODAL, SET_OPTIONS, SET_PLAYERS, SET_USER_SETTINGS, SET_IMPOSTOR_OPTIONS,
 } from './actions';
 
 const MODAL_DEFAULT_STATE = {
@@ -40,9 +40,37 @@ export const options = (state = OPTIONS_DEFAULT_STATE, action) => {
   }
 };
 
+const IMPOSTOR_DEFAULT_OPTIONS = [
+  'Kill <random player>',
+  'Accuse <random player>',
+  'Follow <random player>',
+];
+
+export const impostorOptions = (state = IMPOSTOR_DEFAULT_OPTIONS, action) => {
+  switch (action.type) {
+    case SET_IMPOSTOR_OPTIONS:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export const players = (state = [], action) => {
   switch (action.type) {
     case SET_PLAYERS:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const USER_SETTINGS_DEFAULT_STATE = {
+  userType: 'crewmate',
+};
+
+export const userSettings = (state = USER_SETTINGS_DEFAULT_STATE, action) => {
+  switch (action.type) {
+    case SET_USER_SETTINGS:
       return action.payload;
     default:
       return state;

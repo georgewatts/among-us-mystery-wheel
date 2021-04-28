@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { XCircle } from 'react-feather';
 import difference from 'lodash.difference';
 
-import { hideModal, setPlayers } from '../../../store/actions';
+import { hideModal, setPlayers, setUserSettings } from '../../../store/actions';
 
 import styles from './PlayersModal.module.css';
 
@@ -26,6 +26,8 @@ const USUAL_PLAYERS = [
 const PlayersModal = () => {
   const dispatch = useDispatch();
   const players = useSelector((state) => state.players);
+  const userSettings = useSelector((state) => state.userSettings);
+  const [userType, setUserType] = useState(userSettings.userType);
   const [selectedPlayers, setSelectedPlayers] = useState(players);
   const unselectedPlayers = difference(USUAL_PLAYERS, selectedPlayers);
   const addPlayer = (player) => {
@@ -36,6 +38,15 @@ const PlayersModal = () => {
   };
   return (
     <div>
+      <h2>Are you an impostor or crewmate?</h2>
+      <label htmlFor="crewmate">
+        Crewmate
+        <input type="radio" name="crewmate" value="crewmate" checked={userType === 'crewmate'} onChange={() => setUserType('crewmate')} />
+      </label>
+      <label htmlFor="impostor">
+        Impostor
+        <input type="radio" name="imposter" value="imposter" checked={userType === 'impostor'} onChange={() => setUserType('impostor')} />
+      </label>
       <h2>Select the players playing apart from yourself</h2>
       {unselectedPlayers.length > 0 && (
         <div>
@@ -62,6 +73,7 @@ const PlayersModal = () => {
         className="save"
         type="button"
         onClick={() => {
+          dispatch(setUserSettings({ userType }));
           dispatch(setPlayers(selectedPlayers));
           dispatch(hideModal());
         }}

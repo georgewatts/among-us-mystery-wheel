@@ -10,8 +10,12 @@ import './App.css';
 const App = () => {
   const dispatch = useDispatch();
   const players = useSelector((state) => state.players);
-  if (players.length === 0) {
-    dispatch(showModal({ type: MODAL_TYPES.PLAYERS, closePredicate: (players.length > 0) }));
+  const playerSettings = useSelector((state) => state.userSettings);
+  if (players.length === 0 || playerSettings === null) {
+    dispatch(showModal({
+      type: MODAL_TYPES.PLAYERS,
+      closePredicate: (players.length > 0 && playerSettings !== null),
+    }));
   }
   return (
     <div className="App">
